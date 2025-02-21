@@ -82,4 +82,3 @@ Jika Anda memiliki pertanyaan atau memerlukan bantuan, hubungi kami melalui:
 - LinkTree: [Click Here!](https://linktr.ee/bitheaven)
 
 Terima kasih telah menggunakan STRIKER 2077! Jika ada pertanyaan atau masalah, silakan buka issue di repositori ini.
-# Striker-2077
