@@ -1,0 +1,30 @@
+import random
+from modules.background import Background
+from OpenGL.GL import *
+
+s_width, s_height = 800, 600
+
+class Particle(Background):
+    def __init__(self, x, y):
+        super().__init__(x, y)
+        self.position = [random.randint(0, s_width), random.randint(0, s_height)]
+        self.size = (x, y)
+        self.color = (0.5, 0.5, 0.5)
+        self.vel = random.randint(3, 8)
+
+    def update(self):
+        self.position[1] += self.vel
+        if self.position[1] > s_height:
+            self.position[1] = random.randrange(-10, 0)
+            self.position[0] = random.randrange(0, s_width)
+
+    def draw(self):
+        glColor3f(*self.color)
+        glBegin(GL_QUADS)
+        x, y = self.position
+        size_x, size_y = self.size
+        glVertex2f(x, y)
+        glVertex2f(x + size_x, y)
+        glVertex2f(x + size_x, y + size_y)
+        glVertex2f(x, y + size_y)
+        glEnd()
