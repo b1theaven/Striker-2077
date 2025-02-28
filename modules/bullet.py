@@ -50,3 +50,39 @@ class PlayerBullet:
 
             glDisable(GL_TEXTURE_2D)
 
+class EnemyBullet:
+    def __init__(self, img_path, x, y, scale=(20, 20)):
+        self.image = pygame.image.load(img_path).convert_alpha()
+        self.image = pygame.transform.scale(self.image, scale)
+        self.width, self.height = scale
+        self.position = [x, y]
+        self.active = True
+        self.texture_id = glGenTextures(1)
+        glBindTexture(GL_TEXTURE_2D, self.texture_id)
+        texture_data = pygame.image.tostring(self.image, "RGBA", True)
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, self.width, self.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture_data)
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
+
+    def update(self):
+        self.position[1] += 3
+        if self.position[1] > s_height:
+            self.active = False
+
+    def draw(self):
+        if not self.active:
+            return
+
+        glEnable(GL_TEXTURE_2D)
+        glBindTexture(GL_TEXTURE_2D, self.texture_id)
+        glBegin(GL_QUADS)
+        glTexCoord2f(0, 0)
+        glVertex2f(self.position[0], self.position[1])
+        glTexCoord2f(1, 0)
+        glVertex2f(self.position[0] + self.width, self.position[1])
+        glTexCoord2f(1, 1)
+        glVertex2f(self.position[0] + self.width, self.position[1] + self.height)
+        glTexCoord2f(0, 1)
+        glVertex2f(self.position[0], self.position[1] + self.height)
+        glEnd()
+        glDisable(GL_TEXTURE_2D)
