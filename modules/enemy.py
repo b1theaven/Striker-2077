@@ -40,3 +40,44 @@ class Enemy(Player):
     def draw(self):
         super().draw()
 
+class Bos(Enemy):
+    def __init__(self, img_path, game, scale=(75, 75)):
+        super().__init__(img_path, game, scale)
+        self.width = scale[0]
+        self.height = scale[1]
+        self.position = [-self.width, random.randint(50, 150)]
+        self.move = 3
+        self.wait_time = 0
+        self.wait_duration = 60
+        self.active = True
+
+    def update(self):
+        if self.wait_time > 0:
+            self.wait_time -= 1
+            return
+
+        self.position[0] += self.move
+
+        if self.position[0] > s_width + self.width:
+            self.move *= -1
+            self.position[0] = s_width + self.width
+            self.wait_time = self.wait_duration
+        elif self.position[0] < -self.width:
+            self.move *= -1
+            self.position[0] = -self.width
+            self.wait_time = self.wait_duration
+            self.shoot()
+
+        if self.position[0] % 50 == 0:
+            self.shoot()
+
+    def shoot(self, x_offset=0, y_offset=-20):
+        bullet_x = self.position[0] + (self.width // 2) + x_offset
+        bullet_y = self.position[1] + self.height + y_offset
+        bos_bullet = EnemyBullet("assets/images/peluru-musuh.png", bullet_x, bullet_y)
+        self.game.bos_bullets.append(bos_bullet)
+    
+    def reset_position(self):
+        self.position = [-self.width, random.randint(50, 150)]
+        self.move = abs(self.move)
+        self.active = True
