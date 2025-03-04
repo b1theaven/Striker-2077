@@ -74,11 +74,22 @@ Kontribusi sangat diharapkan! Jika Anda ingin berkontribusi pada pengembangan ga
 
 Proyek ini dilisensikan di bawah [MIT License](https://github.com/b1theaven/Striker-2077/blob/main/LICENSE).
 
+---
+
 ## Support
 
 Jika Anda memiliki pertanyaan atau memerlukan bantuan, hubungi kami melalui:
 
 - Email: mohammadrizky881@gmail.com
 - LinkTree: [Click Here!](https://linktr.ee/bitheaven)
+
+---
+
+## Acknowledgements
+
+- **[Pygame](https://www.pygame.org/):** Terima kasih kepada tim pengembang Pygame atas pustaka yang luar biasa yang memudahkan pembuatan game dengan Python.
+- **[PyOpenGL](http://pyopengl.sourceforge.net/):** Penghargaan kepada para kontributor PyOpenGL yang menyediakan binding OpenGL untuk Python.
+- **[Python Project](https://www.youtube.com/@pythonproject940):** Terima kasih kepada beliau sebagai sumber daya online dan dokumentasi resmi yang telah memberikan panduan dan inspirasi dalam pembuatan game ini.
+- **Kontributor Proyek:** Terima kasih kepada siapa saja yang telah membantu, memberikan masukan, atau berkontribusi dalam pengembangan STRIKER 2077.
 
 Terima kasih telah menggunakan STRIKER 2077! Jika ada pertanyaan atau masalah, silakan buka issue di repositori ini.
